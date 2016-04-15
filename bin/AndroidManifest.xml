@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.testhmsad"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="19" />
+ <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" 
+        android:name="CustomApplication"
+        >
+        <activity
+            android:name="com.example.testhmsad.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                 <category android:name="android.intent.category.HOME" />
+                 <!-- 屏幕解锁的时候会触发这个广播。会受好多条件的制约。 -->
+                <!-- 比如有些第三方桌面不会真正的锁屏，360，LBE等安全软件对广播的拦截等等 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+                 
+            </intent-filter>
+        </activity>
+        <receiver
+            android:name="com.tensor3d.receiver.MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+
+                <!-- 自定义，预留 -->
+                <action android:name="android.intent.action.USER_ACTION" />
+                <!-- 屏幕解锁的时候会触发这个广播。会受好多条件的制约。 -->
+                <!-- 比如有些第三方桌面不会真正的锁屏，360，LBE等安全软件对广播的拦截等等 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <!-- 指定Action的种类，在Android系统启动后第一个运行的应用程序 -->
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+</application>
+
+</manifest>
